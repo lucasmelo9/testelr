@@ -159,24 +159,24 @@ try:
     q, sigma, angles = asymptotes_info(poles, zeros)
     st.write(f"q = #polos - #zeros = {len(poles)} - {len(zeros)} = **{q}**")
     
-if q > 0:
+    if q > 0:
     st.write(f"Centróide (σa): **{sigma:.4f}**")
     st.write("Ângulos:", [f"{a:.2f}°" for a in angles])
-else:
+    else:
     st.write("Não há assíntotas (n ≤ m).")
 
     st.subheader("3.2 Ângulos de saída (polos complexos)")
     deps = departure_angles(poles, zeros)
-if deps:
+    if deps:
     for p, th in deps:
         st.write(f"p = {p:.4g}  →  θd = **{th:.4f}°**")
-else:
+    else:
     st.write("Nenhum polo complexo para calcular ângulo de saída.")
 
     st.subheader("3.3 Breakaway / Break-in (candidatos)")
     cands, Kexpr = breakaway_points(G_expr)
     shown = 0
-for c in cands:
+    for c in cands:
     c = complex(c)
     # normalmente breakaway útil é no eixo real
     if abs(c.imag) < 1e-6 and is_on_real_axis_root_locus(c, poles, zeros):
@@ -185,13 +185,13 @@ for c in cands:
         if abs(Kval.imag) < 1e-3 and Kval.real > 0:
             st.write(f"s ≈ {c.real:.4f}  |  K ≈ {Kval.real:.4f}")
             shown += 1
-if shown == 0:
+    if shown == 0:
     st.write("Nenhum candidato real válido (K>0 e no trecho do LR) encontrado. Mostrando candidatos brutos:")
     st.write([complex(c) for c in cands])
 
-st.subheader("3.4 Routh-Hurwitz (estabilidade em função de K)")
-st.write("Aqui dá para implementar a tabela simbólica em K (mais completo).")
-st.write("Como MVP, dá pra começar com um teste numérico: varrer K e verificar se algum polo cruza para Re>0.")
+    st.subheader("3.4 Routh-Hurwitz (estabilidade em função de K)")
+    st.write("Aqui dá para implementar a tabela simbólica em K (mais completo).")
+    st.write("Como MVP, dá pra começar com um teste numérico: varrer K e verificar se algum polo cruza para Re>0.")
 
                                
 
