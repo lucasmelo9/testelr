@@ -155,26 +155,27 @@ try:
 
         st.subheader("Zeros")
         st.write(control.zeros(G))
-st.subheader("3.1 Assíntotas")
-q, sigma, angles = asymptotes_info(poles, zeros)
-st.write(f"q = #polos - #zeros = {len(poles)} - {len(zeros)} = **{q}**")
+    st.subheader("3.1 Assíntotas")
+    q, sigma, angles = asymptotes_info(poles, zeros)
+    st.write(f"q = #polos - #zeros = {len(poles)} - {len(zeros)} = **{q}**")
+    
 if q > 0:
     st.write(f"Centróide (σa): **{sigma:.4f}**")
     st.write("Ângulos:", [f"{a:.2f}°" for a in angles])
 else:
     st.write("Não há assíntotas (n ≤ m).")
 
-st.subheader("3.2 Ângulos de saída (polos complexos)")
-deps = departure_angles(poles, zeros)
+    st.subheader("3.2 Ângulos de saída (polos complexos)")
+    deps = departure_angles(poles, zeros)
 if deps:
     for p, th in deps:
         st.write(f"p = {p:.4g}  →  θd = **{th:.4f}°**")
 else:
     st.write("Nenhum polo complexo para calcular ângulo de saída.")
 
-st.subheader("3.3 Breakaway / Break-in (candidatos)")
-cands, Kexpr = breakaway_points(G_expr)
-shown = 0
+    st.subheader("3.3 Breakaway / Break-in (candidatos)")
+    cands, Kexpr = breakaway_points(G_expr)
+    shown = 0
 for c in cands:
     c = complex(c)
     # normalmente breakaway útil é no eixo real
