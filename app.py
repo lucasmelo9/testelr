@@ -154,7 +154,7 @@ try:
         st.write(control.poles(G))
 
         st.subheader("Zeros")
-        st.write(control.zeros(G)
+        st.write(control.zeros(G))
 st.subheader("3.1 Assíntotas")
 q, sigma, angles = asymptotes_info(poles, zeros)
 st.write(f"q = #polos - #zeros = {len(poles)} - {len(zeros)} = **{q}**")
